@@ -13,7 +13,7 @@ import TicketFullViewPageAdmin from './pages/TicketFullViewPageAdmin.jsx';
 import TicketFullViewUserPage from './pages/TicketFullViewUserPage.jsx';
 import TicketCommentUserPage from './pages/TicketCommentUserPage.jsx';
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx';
-import UserDashboardPage from './pages/userDashboardPage.jsx';
+import UserDashboardPage from './pages/UserDashboardPage.jsx';
 import AnalyticsPage from './pages/AnalyticsPage.jsx';
 import TicketsPerDayPage from './pages/TicketsPerDayPage.jsx';
 import { Provider } from 'react-redux';
