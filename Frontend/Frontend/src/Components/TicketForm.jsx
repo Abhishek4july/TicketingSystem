@@ -29,7 +29,7 @@ export default function TicketForm() {
   useEffect(() => {
     const fetchPriorityOptions = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/tickets/priority`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/tickets/priority`,{withCredentials:true});
         console.log("Fetched priorities:", res.data);
 
         setPriorityOptions(res.data.data);

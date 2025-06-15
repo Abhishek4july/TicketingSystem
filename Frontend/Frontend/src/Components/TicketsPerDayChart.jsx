@@ -17,7 +17,7 @@ const TicketsPerDayChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`,{withCredentials:true});
         const raw = res.data.data.ticketsPerDay || [];
         const formatted = raw.map(item => ({
           date: item._id,
