@@ -22,7 +22,9 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchMyTickets = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/tickets`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/tickets`,
+            { withCredentials: true }
+        );
         setTickets(res.data.data);
 
         const summary = { open: 0, progress: 0, resolved: 0 };
@@ -42,7 +44,10 @@ const UserDashboard = () => {
 
     const fetchNotificationSettings = async () => {
   try {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/preferences`);
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/preferences`,
+        { withCredentials: true }
+
+    );
     const data = res.data.data || {};
 
     setPreferences({
@@ -64,7 +69,10 @@ const UserDashboard = () => {
     setNotifLoading(true);
     setNotifMessage("");
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/users/preferences`, { [settingKey]: value });
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/users/preferences`, 
+          { withCredentials: true },
+
+        { [settingKey]: value });
       setPreferences((prev) => ({ ...prev, [settingKey]: value }));
       setNotifMessage("Notification settings updated");
     } catch (err) {
