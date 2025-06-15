@@ -7,7 +7,7 @@ const AvgResolutionTimeCard = () => {
   const [loading,setLoading]=useState(true);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`).then(res => {
+    axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`,{withCredentials:true}).then(res => {
       setAvgTime(res.data.data.avgResolutionTimeHours);
       setLoading(false)
     });

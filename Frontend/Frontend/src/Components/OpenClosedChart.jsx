@@ -12,7 +12,9 @@ const OpenClosedChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`,
+          {withCredentials:true}
+        );
         const { open, closed } = response.data.data.openVsClosed;
         setData([
           { name: "Open", value: open },

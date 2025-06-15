@@ -28,7 +28,9 @@ const PriorityBarChart = () => {
   useEffect(() => {
     const fetchPriorityData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`,
+            {withCredentials:true}
+        );
         const ticketsByPriority = response.data.data.ticketsByPriority;
 
         const formattedData = Object.entries(ticketsByPriority).map(
