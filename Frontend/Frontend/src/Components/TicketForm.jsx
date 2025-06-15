@@ -102,8 +102,9 @@ export default function TicketForm() {
       else if (userRole == 'admin')
         navigate('/admin/tickets')
     } catch (err) {
-          console.error("Error in submitTicket:", err);
-
+      console.error("Error in submitTicket:", err);
+  console.log("Response:", err?.response?.data);  
+  setError("Error while submitting the ticket");
       setError("Error while submitting the ticket");
     } finally {
       setLoading(false);
