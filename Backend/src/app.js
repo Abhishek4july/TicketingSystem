@@ -3,17 +3,14 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 
 const app=express()
-const allowedOrigins = process.env.CORS_ORIGIN.split(",");
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://ticketingsystem1.netlify.app"
+];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS policy: Not allowed"));
-    }
-  },
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true,
 }));
 
 
