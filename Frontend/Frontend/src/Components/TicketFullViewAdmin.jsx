@@ -23,7 +23,7 @@ const isVideo = (url) => /\.(mp4|webm|ogg)$/i.test(url);
     useEffect(() => {
     const fetchPriorityOptions = async () => {
       try {
-        const res = await axios.get("/api/v1/tickets/priority");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/tickets/priority`);
               console.log("Fetched priorities:", res.data); 
   
         setPriorityOptions(res.data.data);
@@ -33,7 +33,7 @@ const isVideo = (url) => /\.(mp4|webm|ogg)$/i.test(url);
     };
     const fetchStatusOptions = async () => {
         try {
-          const res = await axios.get("/api/v1/tickets/statusOptions");
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/tickets/statusOptions`);
                 console.log("Fetched options:", res.data); 
     
           setStatusOptions(res.data.data);
@@ -48,7 +48,7 @@ const isVideo = (url) => /\.(mp4|webm|ogg)$/i.test(url);
   useEffect(() => {
     const fetchTicket = async () => {
       try {
-        const res = await axios.get(`/api/v1/admin/tickets/${ticketId}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/${ticketId}`);
         setTicket(res.data.data);
         console.log("Ticket Data:", res);
          console.log("Ticket Data attachments:", res.data.data.attachments);
@@ -63,7 +63,7 @@ const isVideo = (url) => /\.(mp4|webm|ogg)$/i.test(url);
     
     const fetchSupportstaff=async()=>{
       try {
-        const res=await axios.get('/api/v1/admin/support-staff',{
+        const res=await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/support-staff`,{
           withCredentials:true,
         })
               console.log("Support Staff List:", res.data.data);
@@ -82,7 +82,7 @@ const isVideo = (url) => /\.(mp4|webm|ogg)$/i.test(url);
     if (!selectedUser) return;
 
     try {
-      const res = await axios.post(`/api/v1/admin/tickets/${ticketId}/assign`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/${ticketId}/assign`, {
         assignedTo: selectedUser,
       });
 

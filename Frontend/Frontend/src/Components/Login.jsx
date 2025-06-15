@@ -19,7 +19,7 @@ const login = async (data) => {
   setLoading(true);
   try {
     const response = await axios.post(
-      "/api/v1/users/login",
+      `${import.meta.env.VITE_API_URL}/api/v1/users/login`,
       data,
       { withCredentials: true }
     );

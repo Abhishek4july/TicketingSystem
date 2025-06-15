@@ -32,7 +32,7 @@ const TagsBarChart = () => {
   useEffect(() => {
     const fetchTagsData = async () => {
       try {
-        const response = await axios.get("/api/v1/admin/analytics");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/analytics`);
         const tagsData = response.data.data.ticketsByTag || {};
 
         const tagNames = Object.keys(tagsData);

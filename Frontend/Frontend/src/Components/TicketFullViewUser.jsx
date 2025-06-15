@@ -14,7 +14,7 @@ const TicketFullViewUser = () => {
   useEffect(() => {
     const fetchTicket = async () => {
       try {
-        const res = await axios.get(`/api/v1/users/tickets/${ticketId}`, { withCredentials: true })
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/tickets/${ticketId}`, { withCredentials: true })
         setTicket(res.data.data);
         setError("");
       } catch (error) {

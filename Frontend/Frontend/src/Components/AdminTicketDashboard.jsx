@@ -35,7 +35,7 @@ const AdminTicketDashboard = () => {
   useEffect(() => {
   const fetchPriorityOptions = async () => {
     try {
-      const res = await axios.get("/api/v1/tickets/priority");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/tickets/priority`);
             console.log("Fetched priorities:", res.data); 
 
       setPriorityOptions(res.data.data);
@@ -46,7 +46,7 @@ const AdminTicketDashboard = () => {
 
   const fetchStatusOptions = async () => {
     try {
-      const res = await axios.get("/api/v1/tickets/statusOptions");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/tickets/statusOptions`);
             console.log("Fetched options:", res.data); 
 
       setStatusOptions(res.data.data);
@@ -63,7 +63,7 @@ const AdminTicketDashboard = () => {
   const fetchTickets = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("/api/v1/admin/tickets");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets`);
       setTickets(res.data.data || []);
       setError("");
     } catch (error) {
@@ -76,7 +76,7 @@ const AdminTicketDashboard = () => {
 
 const fetchNotificationPreferences = async () => {
   try {
-    const res = await axios.get("/api/v1/admin/preferences");
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/preferences`);
     setNotificationPreferences(prev => ({
       ...prev,
       ...res.data.data
@@ -94,7 +94,7 @@ const fetchNotificationPreferences = async () => {
         [preferenceKey]: !notificationPreferences[preferenceKey],
       };
       setNotificationPreferences(updatedPrefs);
-      await axios.put("/api/v1/admin/preferences", updatedPrefs);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/admin/preferences`, updatedPrefs);
     } catch (error) {
       console.error("Failed to update notification preferences", error);
     }
@@ -113,7 +113,7 @@ const fetchNotificationPreferences = async () => {
 
     setLoading(true);
     try {
-      const res = await axios.get("/api/v1/admin/tickets/search", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/search`, {
         params: { searchField: searchField.toLowerCase(), searchTerm: searchTerm.trim() }
       });
       setTickets(res.data.data || []);
@@ -134,7 +134,7 @@ const fetchNotificationPreferences = async () => {
       if (filters.tags) {
         params.tags = filters.tags.split(",").map(t => t.trim()).filter(t => t.length > 0);
       }
-      const res = await axios.get("/api/v1/admin/tickets/filter", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/filter`, {
         params: filters
       });
       console.log("Fetched tickets:", res.data);
@@ -152,7 +152,7 @@ const fetchNotificationPreferences = async () => {
     if (!sort.field) return;
     setLoading(true);
     try {
-      const res = await axios.get("/api/v1/admin/tickets/sort", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/sort`, {
         params: {
           sortField: sort.field,
           sortOrder: sort.order

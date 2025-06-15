@@ -17,7 +17,7 @@ function TicketCommentsAdmin() {
     const fetchComments=async()=>{
         try {
             setCommentsLoading(true);
-            const res=await axios.get(`/api/v1/admin/tickets/${ticketId}/comments`, {
+            const res=await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/${ticketId}/comments`, {
                 withCredentials: true,
             })
             setComments(res.data.data);
@@ -50,7 +50,7 @@ function TicketCommentsAdmin() {
         setSubmitMessage("");
 
         try {
-            const res=await axios.post(`/api/v1/admin/tickets/${ticketId}/comments`,formData,{
+            const res=await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/${ticketId}/comments`,formData,{
                 headers:{
                     "Content-Type":"multipart/form-data",
                 },

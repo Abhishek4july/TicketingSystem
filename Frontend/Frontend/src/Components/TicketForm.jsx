@@ -29,7 +29,7 @@ export default function TicketForm() {
   useEffect(() => {
     const fetchPriorityOptions = async () => {
       try {
-        const res = await axios.get("/api/v1/tickets/priority");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/tickets/priority`);
         console.log("Fetched priorities:", res.data);
 
         setPriorityOptions(res.data.data);
@@ -39,7 +39,7 @@ export default function TicketForm() {
     };
     const fetchUser = async () => {
       try {
-        const res = await axios.get("/api/v1/users/getUser", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/getUser`, {
           withCredentials: true,
         });
 
@@ -86,7 +86,7 @@ export default function TicketForm() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/users/submitTicket",
+        `${import.meta.env.VITE_API_URL}/api/v1/users/submitTicket`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

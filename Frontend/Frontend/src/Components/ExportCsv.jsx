@@ -8,7 +8,7 @@ function ExportCsv() {
   const handleExportCSV = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/v1/admin/tickets');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets`);
       const tickets = res.data.data;
 
       const csvData = tickets.map(ticket => ({

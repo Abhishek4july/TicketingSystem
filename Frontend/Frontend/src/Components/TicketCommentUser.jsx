@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 function TicketCommentsUser() {
   const { ticketId } = useParams();
   const [comments, setComments] = useState([]);
-  const [commentsLoading, setCommentsLoading] = useState(true); // New loading state
+  const [commentsLoading, setCommentsLoading] = useState(true);
   const [content, setContent] = useState('');
   const [file, setFile] = useState(null);
   const [error, setError] = useState('');
@@ -17,21 +17,21 @@ function TicketCommentsUser() {
 
   const fetchComments = async () => {
     try {
-      setCommentsLoading(true); // Start loading
-      const res = await axios.get(`/api/v1/users/tickets/${ticketId}/comments`, {
+      setCommentsLoading(true);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/tickets/${ticketId}/comments`, {
         withCredentials: true,
       });
       setComments(res.data.data);
     } catch (err) {
       setError('Failed to fetch comments');
     } finally {
-      setCommentsLoading(false); // Done loading
+      setCommentsLoading(false); 
     }
   };
 
   const fetchTicket = async () => {
     try {
-      const res = await axios.get(`/api/v1/users/tickets/${ticketId}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/tickets/${ticketId}`, {
         withCredentials: true,
       });
       setTicketStatus(res.data.data.status);
@@ -64,7 +64,7 @@ function TicketCommentsUser() {
     setSubmitMessage('');
 
     try {
-      const res = await axios.post(`/api/v1/users/tickets/${ticketId}/comments`, formData, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/users/tickets/${ticketId}/comments`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -21,7 +21,7 @@ function Header() {
 
   const handleLogout = async () => {
     try {
-      await axios.post('/api/v1/users/logout', {}, { withCredentials: true });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/users/logout`, {}, { withCredentials: true });
       localStorage.removeItem('auth');
       localStorage.removeItem('user');
       dispatch(logoutUser());
