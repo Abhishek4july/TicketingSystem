@@ -127,13 +127,13 @@ export default function TicketForm() {
   //   </div>
   // );
 
-  if (isRoleLoading) {
-    return (
-      <div className="text-center mt-10 text-white">
-        Loading user details...
-      </div>
-    );
-  }
+  // if (isRoleLoading) {
+  //   return (
+  //     <div className="text-center mt-10 text-white text-6xl">
+  //       Loading user details...
+  //     </div>
+  //   );
+  // }
 
 
   return (
