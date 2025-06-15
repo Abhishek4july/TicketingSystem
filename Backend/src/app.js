@@ -3,14 +3,14 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 
 const app=express()
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://ticketingsystem1.netlify.app"
-];
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "https://ticketingsystem1.netlify.app"
+// ];
 
 app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
+  origin: ["http://localhost:5173", "https://ticketingsystem1.netlify.app"],
+  credentials: true
 }));
 
 
