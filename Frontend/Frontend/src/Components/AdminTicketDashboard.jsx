@@ -130,8 +130,6 @@ const fetchNotificationPreferences = async () => {
     try {
       const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/search`, {
         params: { searchField: searchField.toLowerCase(), searchTerm: searchTerm.trim() },
-        
-      },{
           withCredentials: true
 
       });
@@ -153,8 +151,7 @@ const fetchNotificationPreferences = async () => {
       if (filters.tags) {
         params.tags = filters.tags.split(",").map(t => t.trim()).filter(t => t.length > 0);
       }
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/filter`,{  withCredentials: true
-} {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/filter`,{  withCredentials: true,
         params: filters
       });
       console.log("Fetched tickets:", res.data);
@@ -172,8 +169,8 @@ const fetchNotificationPreferences = async () => {
     if (!sort.field) return;
     setLoading(true);
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/sort`,{  withCredentials: true
-} {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/sort`,{  withCredentials: true,
+ 
         params: {
           sortField: sort.field,
           sortOrder: sort.order
