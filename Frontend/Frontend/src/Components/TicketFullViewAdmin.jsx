@@ -301,7 +301,7 @@ return (
   <button
     onClick={async () => {
       try {
-        const res = await axios.put(`/api/v1/admin/tickets/${ticketId}/update`, {
+        const res = await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/${ticketId}/update`, {
           status: ticket.status,
           priority: ticket.priority,
         });
