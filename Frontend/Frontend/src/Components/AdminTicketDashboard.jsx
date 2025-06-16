@@ -276,7 +276,7 @@ const fetchNotificationPreferences = async () => {
       />
       <button
         onClick={applyFilter}
-        className="bg-purple-600 hover:bg-purple-700 text-black px-4 py-2 rounded shadow"
+        className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded shadow"
       >
         🎯 Apply Filters
       </button>
@@ -301,7 +301,7 @@ const fetchNotificationPreferences = async () => {
       </select>
       <button
         onClick={applySort}
-        className="bg-green-600 hover:bg-green-700 text-black px-4 py-2 rounded shadow"
+        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow"
       >
         ↕️ Sort
       </button>
