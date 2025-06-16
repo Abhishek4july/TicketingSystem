@@ -98,7 +98,7 @@ localStorage.setItem("auth", "true");
 
             <Button
               type="submit"
-              className="w-full bg-blue-600 text-black py-3 rounded-xl hover:bg-blue-700 transition ease-in-out duration-200"
+              className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition ease-in-out duration-200"
             >
               {loading ? (
                 <span>Signing in...</span> 
