@@ -304,7 +304,7 @@ return (
         const res = await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/${ticketId}/update`, {
           status: ticket.status,
           priority: ticket.priority,
-        });
+        },{withCredentials:true});
         setTicket(res.data.data);
         setAssignMessage1("Ticket updated successfully!");
       } catch (err) {
