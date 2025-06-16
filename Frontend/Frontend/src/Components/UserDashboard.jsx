@@ -69,10 +69,9 @@ const UserDashboard = () => {
     setNotifLoading(true);
     setNotifMessage("");
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/users/preferences`, 
-          { withCredentials: true },
-
-        { [settingKey]: value });
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/users/preferences`,
+        { [settingKey]: value }),
+        { withCredentials: true }
       setPreferences((prev) => ({ ...prev, [settingKey]: value }));
       setNotifMessage("Notification settings updated");
     } catch (err) {
