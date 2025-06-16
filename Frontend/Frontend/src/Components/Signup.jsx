@@ -85,7 +85,7 @@ function Signup() {
           />
           <Button
             type="submit"
-            className="w-full"
+            className="w-full text-black"
             disabled={loading}
           >
             {loading ? "Creating..." : "Create Account"}
