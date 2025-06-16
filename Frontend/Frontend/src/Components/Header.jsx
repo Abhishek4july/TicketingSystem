@@ -82,14 +82,14 @@ function Header() {
             <>
               {isAdmin && adminLinks()}
               <span className="text-gray-300">{user?.name}</span>
-              <button onClick={handleLogout} className="bg-red-600 text-black px-4 py-1 rounded hover:bg-red-700">
+              <button onClick={handleLogout} className="bg-red-600 text-white px-4 py-1 md:text-black sm:bg-black sm:text-white rounded hover:bg-red-700">
                 Logout
               </button>
             </>
           ) : (
             <>
               {!isAuthPage && currentPath !== '/login' && (
-                <Link to="/login" className="bg-blue-600 px-4 py-1 rounded hover:bg-blue-700">Login</Link>
+                <Link to="/login" className="bg-blue-600 px-4 py-1 rounded  hover:bg-blue-700">Login</Link>
               )}
               {!isAuthPage && currentPath !== '/signup' && (
                 <Link to="/signup" className="bg-white text-black px-4 py-1 rounded hover:bg-gray-200">Sign Up</Link>
@@ -113,7 +113,7 @@ function Header() {
                   handleLogout();
                   toggleSidebar();
                 }}
-                className="w-full text-black text-left bg-red-600 px-4 py-2 rounded hover:bg-red-700"
+                className="w-full text-white md:text-black sm:bg-black sm:text-white text-left bg-red-600 px-4 py-2 rounded hover:bg-red-700"
               >
                 Logout
               </button>

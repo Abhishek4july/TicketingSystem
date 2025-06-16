@@ -222,7 +222,7 @@ const fetchNotificationPreferences = async () => {
       />
       <button
         onClick={applySearch}
-        className="bg-blue-600 hover:bg-blue-700 text-black bg px-4 py-2 rounded shadow w-full sm:w-auto"
+        className="bg-blue-600 hover:bg-blue-700 textwhite md:text-black sm:bg-black sm:text-white bg px-4 py-2 rounded shadow w-full sm:w-auto"
       >
         🔍 Search
       </button>

@@ -255,7 +255,7 @@ return (
         </select>
         <button
           onClick={handleAssign}
-          className="mt-3 px-6 py-2 bg-cyan-600 text-black rounded-lg hover:bg-cyan-700"
+          className="mt-3 px-6 py-2 bg-cyan-600 text-white md:text-black sm:bg-black sm:text-white rounded-lg hover:bg-cyan-700"
         >
           Assign
         </button>
@@ -312,7 +312,7 @@ return (
         setAssignMessage1("Failed to update ticket");
       }
     }}
-    className="mt-3 px-6 py-2 bg-cyan-600 text-black rounded-lg hover:bg-cyan-700"
+    className="mt-3 px-6 py-2 bg-cyan-600 text-white md:text-black sm:bg-black sm:text-white rounded-lg hover:bg-cyan-700"
   >
     Update
   </button>

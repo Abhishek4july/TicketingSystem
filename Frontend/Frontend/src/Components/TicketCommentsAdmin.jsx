@@ -135,7 +135,7 @@ function TicketCommentsAdmin() {
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-950 text-black px-4 py-2 rounded hover:bg-cyan-700 transition font-semibold"
+          className="bg-blue-950 text-white md:text-black sm:bg-black sm:text-white px-4 py-2 rounded hover:bg-cyan-700 transition font-semibold"
         >
           {loading ? "Submitting..." : "Post Comment"}
         </button>

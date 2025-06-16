@@ -53,7 +53,7 @@ function ExportFilteredCsv({ filters = {} }) {
     <button
       onClick={handleExportCSV}
       disabled={loading}
-      className={`bg-green-600 text-black ml-1.5 px-4 py-2 rounded hover:bg-green-700 ${loading && 'opacity-60 cursor-wait'}`}
+      className={`bg-green-600 ml-1.5 px-4 py-2 text-white md:text-black sm:bg-black sm:text-white rounded hover:bg-green-700 ${loading && 'opacity-60 cursor-wait'}`}
     >
       {loading ? 'Exporting...' : 'Export Filtered CSV'}
     </button>
