@@ -222,7 +222,7 @@ const fetchNotificationPreferences = async () => {
       />
       <button
         onClick={applySearch}
-        className="bg-blue-600 hover:bg-blue-700 text-black px-4 py-2 rounded shadow w-full sm:w-auto"
+        className="bg-blue-600 hover:bg-blue-700 text-black bg px-4 py-2 rounded shadow w-full sm:w-auto"
       >
         🔍 Search
       </button>
@@ -276,7 +276,7 @@ const fetchNotificationPreferences = async () => {
       />
       <button
         onClick={applyFilter}
-        className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded shadow"
+        className="md:text-black sm:bg-black sm:text-white hover:bg-purple-700  text-white px-4 py-2 rounded shadow"
       >
         🎯 Apply Filters
       </button>
@@ -301,7 +301,7 @@ const fetchNotificationPreferences = async () => {
       </select>
       <button
         onClick={applySort}
-        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow"
+        className="bg-green-600 hover:bg-green-700 md:text-black sm:bg-black sm:text-white text-white px-4 py-2 rounded shadow"
       >
         ↕️ Sort
       </button>
