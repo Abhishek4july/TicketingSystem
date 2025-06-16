@@ -101,7 +101,7 @@ function Header() {
 
       {isSidebarOpen && (
         <div className="fixed top-0 right-0 h-full w-40 bg-gray-900 text-white z-50 flex flex-col items-start p-4 gap-3 md:hidden shadow-lg">
-          <button onClick={toggleSidebar} className="self-end mb-4 text-black">
+          <button onClick={toggleSidebar} className="self-end mb-4 text-white">
             <X size={24} />
           </button>
           {isAuthenticated ? (
