@@ -73,7 +73,7 @@ function Header() {
     <>
       <header className="bg-gray-800 text-white w-full fixed top-0 left-0 z-50 shadow px-4 py-3 flex justify-between items-center">
         <h1 className="text-xl sm:text-2xl font-bold text-blue-300">Support System</h1>
-        <button onClick={toggleSidebar} className="md:hidden text-black">
+        <button onClick={toggleSidebar} className="md:hidden text-white md:text-black sm:bg-black sm:text-white">
           {isSidebarOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
