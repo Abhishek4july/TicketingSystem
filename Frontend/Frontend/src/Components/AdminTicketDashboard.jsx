@@ -108,8 +108,9 @@ const fetchNotificationPreferences = async () => {
         [preferenceKey]: !notificationPreferences[preferenceKey],
       };
       setNotificationPreferences(updatedPrefs);
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/admin/preferences`,{  withCredentials: true
-}, updatedPrefs);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/admin/preferences`, updatedPrefs,
+        {  withCredentials: true}
+      );
     } catch (error) {
       console.error("Failed to update notification preferences", error);
     }
