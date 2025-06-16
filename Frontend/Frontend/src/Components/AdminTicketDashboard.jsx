@@ -198,7 +198,7 @@ const fetchNotificationPreferences = async () => {
   };
 
   return (
-  <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-8 bg-gray-900 min-h-screen text-white">
+  <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-8 bg-gray-900 min-h-screen">
     <h1 className="text-2xl sm:text-3xl font-bold text-blue-300 border-b border-blue-500 pb-2">
       🎫 Admin Ticket Dashboard
     </h1>
