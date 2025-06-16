@@ -17,7 +17,7 @@ function ExportFilteredCsv({ filters = {} }) {
       if (filters.tags && filters.tags.length > 0)
         params.append("tags", filters.tags.join(','));
 
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/filter?${params.toString()}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/filter?${params.toString()}`,{withCredentials:true});
       const tickets = res.data.data;
 
       const csvData = tickets.map(ticket => ({
