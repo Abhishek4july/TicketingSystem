@@ -1,1 +1,1 @@
-Video link for the project:https://somup.com/cT13X2LxH4
+Video link for the project:https://go.screenpal.com/watch/cT132unXmoT
