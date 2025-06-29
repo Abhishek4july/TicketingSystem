@@ -3,10 +3,11 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 
 const app=express()
-app.use(cors({
+app.options("*", cors({
   origin: ["http://localhost:5173", "https://ticketingsystem1.netlify.app"],
   credentials: true
 }));
+
 
 
 app.use(express.json({limit:"16kb"}))
