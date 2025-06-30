@@ -3,10 +3,19 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 
 const app=express()
-app.options("*", cors({
-  origin: ["http://localhost:5173", "https://ticketingsystem1.netlify.app"],
+app.use(cors({
+  origin: function (origin, callback) {
+    const allowedOrigins = ["http://localhost:5173", "https://ticketingsystem1.netlify.app"];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
+
 
 const originalRoute = app.use;
 app.use = function (path, ...rest) {
