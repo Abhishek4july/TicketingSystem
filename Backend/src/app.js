@@ -8,7 +8,13 @@ app.options("*", cors({
   credentials: true
 }));
 
-
+const originalRoute = app.use;
+app.use = function (path, ...rest) {
+  if (typeof path === "string" && path.includes("://")) {
+    console.warn("🚨 Invalid route path passed to app.use():", path);
+  }
+  return originalRoute.call(this, path, ...rest);
+};
 
 app.use(express.json({limit:"16kb"}))
 app.use(express.urlencoded({extended:true,limit:"16kb"}))
