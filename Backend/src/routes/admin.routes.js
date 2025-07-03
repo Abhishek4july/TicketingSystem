@@ -9,6 +9,8 @@ import { createComment } from "../controllers/comments.controller.js";
 import {getNotificationPreferences, updateNotificationPreferences} from "../controllers/email.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import getTicketAnalytics from "../controllers/analytics.controllers.js";
+import { suggestReply } from "../controllers/ai.js";
+
 const router=Router()
 
 router.route('/tickets/filter').get(verifyJWT,isAdmin,getFilteredTickets);
@@ -43,5 +45,6 @@ router.route('/preferences').put(verifyJWT,isAdmin,updateNotificationPreferences
 
 router.route('/support-staff').get(verifyJWT,isAdmin,getSupportStaff)
 router.route('/analytics').get(verifyJWT,isAdmin,getTicketAnalytics)
+router.route('/suggest-reply').post(suggestReply);
 
 export default router;
