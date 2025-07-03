@@ -22,7 +22,7 @@ export async function getAISuggestedReply(ticketContent, comments = []) {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "huggingfaceh4/zephyr-7b-beta", // ✅ you can also use: "mistral/mistral-7b-instruct"
+model: "mistralai/mistral-7b-instruct",
         messages,
         temperature: 0.7,
         max_tokens: 300,
