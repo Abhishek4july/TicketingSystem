@@ -1,41 +1,50 @@
-import { useState } from "react";
-import axios from 'axios'
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+// import React from "react";
+function AiReplyHelper({ ticketContent, comments }) {
+  const [loading, setLoading] = useState(false); // ✅ This is valid
+  const [suggestion, setSuggestion] = useState("");
+  const [error, setError] = useState("");
 
-function AiReplyHelper({ticketContent,comments}){
-    const [loading,setLoading]=useState(false);
-    const [suggestion,setSuggestion]=useState("");
-    const [error,setError]=useState("");
+  const fetchAiReply = async () => {
+    console.log("🚀 Fetching AI reply...");
+    setLoading(true);
+    setError("");
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/suggest-reply`,
+        { ticketContent, comments },
+        { withCredentials: true }
+      );
 
-    const fetchAiReply=async()=>{
-        setLoading(true);
-        setError("");
-        try {
-           const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/admin/suggest-reply`, {
-                ticketContent,
-                comments
-            },{withCredentials:true});
-            if(res){
-                setSuggestion(res.data.data.suggestion);
-            }
-            else{
-                setError(res.data.message||"Failed to generate reply");
-            }
+      if (res?.data?.data) {
+        setSuggestion(res.data.data); // ✅ no hook here
+      } else {
+        console.warn("⚠️ Unexpected response format:", res.data);
+        setError(res.data.message || "Failed to generate reply");
+      }
+    } catch (error) {
+      console.error("AI API Error:", error?.response || error.message || error);
+      setError("AI request failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        } catch (error) {
-            setError("AI request failed.Please try again.");
-        }
-        finally{
-            setLoading(false);
-        }
-    };
+  useEffect(() => {
+    console.log("🧠 AiReplyHelper component mounted");
+    console.log("ticketContent prop:", ticketContent);
+    console.log("comments prop:", comments);
+  }, []);
 
-
-      return (
+  return (
     <div className="p-4 my-4 border rounded-md text-black bg-gray-50 shadow-sm">
       <h2 className="font-semibold text-lg mb-2 text-black">💬 AI Reply Assistant</h2>
       <button
-        onClick={fetchAiReply}
+        onClick={() => {
+          console.log("✅ Button clicked");
+          fetchAiReply();
+        }}
         className="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
         disabled={loading}
       >
@@ -60,7 +69,3 @@ function AiReplyHelper({ticketContent,comments}){
 }
 
 export default AiReplyHelper;
-
-
-
-

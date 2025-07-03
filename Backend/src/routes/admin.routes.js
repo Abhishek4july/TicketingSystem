@@ -1,6 +1,6 @@
 import { getFilteredTickets, searchTickets,getTicketById, assignTicket, getAllUsers, updateTicketStatusPriority, getSupportStaff } from "../controllers/admin.controller.js";
 import { getComments } from "../controllers/comments.controller.js";
-import { isAdmin } from "../middlewares/admin.middleware.js";
+import { aiLimiter, isAdmin } from "../middlewares/admin.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { Router } from "express";
 import { sortTickets } from "../controllers/admin.controller.js";

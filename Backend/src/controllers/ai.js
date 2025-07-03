@@ -1,19 +1,16 @@
-import { getAISuggestedReply } from "../utils/openai.js";
-import {asyncHandler} from "../utils/asyncHandler.js"
+import { getAISuggestedReply } from "../utils/openai.js"; // this now uses OpenRouter
+import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 
-export const suggestReply=asyncHandler(async(req,res)=>{
-   const {ticketContent,comments}=req.body;
-   if(!ticketContent){
-    return res.status(400).json(
-        new ApiError(400,"TicketContent is required")
-    )
-   }
+export const suggestReply = asyncHandler(async (req, res) => {
+  const { ticketContent, comments } = req.body;
 
-   const suggestion=await getAISuggestedReply(ticketContent,comments||[]);
+  if (!ticketContent) {
+    return res.status(400).json(new ApiError(400, "Ticket content is required"));
+  }
 
-   return res.status(200).json(
-    new ApiResponse(200,suggestion,"AI reply generated successfully")
-   )
-})
+  const suggestion = await getAISuggestedReply(ticketContent, comments || []);
+
+  return res.status(200).json(new ApiResponse(200, suggestion, "AI reply generated successfully"));
+});

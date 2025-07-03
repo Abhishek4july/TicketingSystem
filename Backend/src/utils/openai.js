@@ -1,10 +1,6 @@
-import OpenAI from "openai";
+import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 export async function getAISuggestedReply(ticketContent, comments = []) {
   const messages = [
@@ -22,12 +18,27 @@ export async function getAISuggestedReply(ticketContent, comments = []) {
     })),
   ];
 
-  const res = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages,
-    temperature: 0.6,
-    max_tokens: 250,
-  });
+  try {
+    const response = await axios.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        model: "huggingfaceh4/zephyr-7b-beta", // ✅ you can also use: "mistral/mistral-7b-instruct"
+        messages,
+        temperature: 0.7,
+        max_tokens: 300,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          "HTTP-Referer": "https://ticketingsystem1.netlify.app", // ✅ Must match your frontend URL
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-  return res.choices[0].message.content;
+    return response.data.choices[0].message.content;
+  } catch (error) {
+    console.error("❌ AI Suggestion Error:", error.response?.data || error.message);
+    throw new Error("AI service failed. Please try again later.");
+  }
 }

@@ -8,3 +8,11 @@ export const isAdmin=asyncHandler(async(req,res,next)=>{
 
     next();
 });
+
+import rateLimit from "express-rate-limit";
+
+export const aiLimiter = rateLimit({
+  windowMs: 60 * 1000, 
+  max: 10, 
+  message: "Too many AI requests, please try again in a minute",
+});
