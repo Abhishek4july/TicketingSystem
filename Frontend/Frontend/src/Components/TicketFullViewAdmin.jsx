@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import dayjs from "dayjs";
+import AiReplyHelper from "./AiReplyHelper";
 
 const TicketFullViewAdmin = () => {
   const { ticketId } = useParams();
@@ -135,6 +136,14 @@ const isVideo = (url) => /\.(mp4|webm|ogg)$/i.test(url);
       <div className="mt-6 text-left">
         <Detail label="Description" value={ticket.description} fullWidth={true} />
       </div>
+
+      <AiReplyHelper
+  ticketContent={ticket.description}
+  comments={ticket.comments?.map(c => ({
+    text: c.text,
+    byAdmin: c.createdBy?.role === "admin"
+  }))}
+/>
 
 
 {ticket.attachments && ticket.attachments.length > 0 && (
