@@ -158,10 +158,8 @@ const isVideo = (url) => /\.(mp4|webm|ogg)$/i.test(url);
  const getFixedUrl = (url) => {
   if (!url) return "";
 
-  // If it's already raw, return as-is
   if (/\/raw\/upload\//.test(url)) return url;
 
-  // If it's a PDF and not raw yet
   if (/\.pdf$/i.test(url) && /\/upload\//.test(url)) {
     return url.replace("/upload/", "/raw/upload/");
   }
