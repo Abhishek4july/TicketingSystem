@@ -2,7 +2,11 @@ import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
 
-export async function getAISuggestedReply(ticketContent, comments = []) {
+  export async function getAISuggestedReply(ticketContent, comments = []) {
+  const conversation = comments.map((c) =>
+    `${c.byAdmin ? "Support" : "User"}: ${c.text}`
+  ).join("\n");
+
   const messages = [
     {
       role: "system",
@@ -10,12 +14,8 @@ export async function getAISuggestedReply(ticketContent, comments = []) {
     },
     {
       role: "user",
-      content: `Ticket: ${ticketContent}`,
+      content: `Ticket: ${ticketContent}\n\nConversation history:\n${conversation}`,
     },
-    ...comments.map((c) => ({
-      role: c.byAdmin ? "assistant" : "user",
-      content: c.text,
-    })),
   ];
 
   try {
@@ -30,7 +30,7 @@ model: "mistralai/mistral-7b-instruct",
       {
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          "HTTP-Referer": "https://ticketingsystem1.netlify.app", // ✅ Must match your frontend URL
+          "HTTP-Referer": "https://ticketingsystem1.netlify.app", 
           "Content-Type": "application/json",
         },
       }
