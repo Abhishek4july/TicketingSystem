@@ -1,4 +1,4 @@
-import { getAISuggestedReply } from "../utils/openai.js"; // this now uses OpenRouter
+import { getAISuggestedReply } from "../utils/openai.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
